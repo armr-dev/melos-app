@@ -36,5 +36,3 @@
     5.3. Eventos serão marcados no mapa organizado por cor;
     
         5.3.1. Cor será definida por tipo de evento;
-
-## 6. ****
