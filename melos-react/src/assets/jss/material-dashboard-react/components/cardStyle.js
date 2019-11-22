@@ -19,7 +19,8 @@ const cardStyle = {
     flexDirection: "column",
     minWidth: "0",
     wordWrap: "break-word",
-    fontSize: ".875rem"
+    fontSize: ".875rem",
+    alignItems: 'center',
   },
   cardPlain: {
     background: "transparent",

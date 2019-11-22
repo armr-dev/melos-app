@@ -275,7 +275,7 @@ const buttonStyle = {
     pointerEvents: "none"
   },
   lg: {
-    padding: "1.125rem 2.25rem",
+    padding: "0.6rem 2.25rem",
     fontSize: "0.875rem",
     lineHeight: "1.333333",
     borderRadius: "0.2rem"

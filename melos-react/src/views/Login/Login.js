@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+import RegularButton from "components/CustomButtons/Button";
+import logo from 'logo.svg'
+import { Button } from "@material-ui/core";
+import { primaryColor } from "assets/jss/material-dashboard-react.js"
 
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-// import "./Login.css";
-
+const useStyles = makeStyles(styles);
 
 export default function Login(props) {
+    const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-  
+    console.log(primaryColor[0])
+
     function validateForm() {
       return email.length > 0 && password.length > 0;
     }
@@ -21,33 +26,55 @@ export default function Login(props) {
     }
     
     return (
-        <Card>
-            <CardBody color="primary">
-                <div className="Login">
-                <form onSubmit={handleSubmit}>
-                    <FormGroup controlId="email" bsSize="large">
-                    <FormLabel>Email</FormLabel>
-                    <FormControl
-                        autoFocus
-                        type="email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                    </FormGroup>
-                    <FormGroup controlId="password" bsSize="large">
-                    <FormLabel>Password</FormLabel>
-                    <FormControl
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        type="password"
-                    />
-                    </FormGroup>
-                    <Button block bsSize="large" disabled={!validateForm()} type="submit">
-                    Login
-                    </Button>
-                </form>
+      <form onSubmit={handleSubmit}>
+        <div style={{flexDirection:'column', alignItems:'center', justifyContent:'center', display:'flex'}}>
+          <Card>
+              <CardBody color="primary">
+                <div style={{marginTop:'40px', marginBottom:'20px'}}>
+                  <img src={logo}/>
                 </div>
-            </CardBody>
-        </Card>
+                  <CustomInput
+                    formControlProps={{
+                      className: classes.margin + " " + classes.CustomInput
+                    }}
+                    inputProps={{
+                      placeholder: "Email",
+                      inputProps: {
+                        "aria-label": "Email"
+                      }
+                    }}
+                    />
+                  <CustomInput
+                    formControlProps={{
+                      className: classes.margin + " " + classes.CustomInput
+                    }}
+                    inputProps={{
+                      placeholder: "Senha",
+                      inputProps: {
+                        "aria-label": "Senha"
+                      }
+                    }}
+                    />
+                  <RegularButton 
+                    style={{width:'80%', margin:'25px'}}
+                    color={'primary'}
+                    size={'lg'}
+                    round={true}
+                    className={"LoginButton"}>
+                      Login
+                  </RegularButton>
+              </CardBody>
+          </Card>
+        <div style={{flex:'1', flexDirection:'column', alignItems:'center', justifyContent:'center', display:'flex'}}>
+            Ainda não é cadastrado?
+          </div>
+          <Button href='' 
+                  style={{color:primaryColor[0], flex:'1'}}>
+                    Cadastre-se!
+          </Button>
+
+        </div>
+      </form>
+
       );
     }
