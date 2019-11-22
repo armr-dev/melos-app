@@ -8,8 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Navbar from "components/Navbars/Navbar.js";
 import Footer from "components/Footer/Footer.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
@@ -94,17 +92,6 @@ export default function RTL({ ...rest }) {
   }, [mainPanel]);
   return (
     <div className={classes.wrapper}>
-      <Sidebar
-        routes={routes}
-        logoText={"الإبداعية تيم"}
-        logo={logo}
-        image={image}
-        handleDrawerToggle={handleDrawerToggle}
-        open={mobileOpen}
-        color={color}
-        rtlActive
-        {...rest}
-      />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
           routes={routes}
@@ -121,15 +108,6 @@ export default function RTL({ ...rest }) {
           <div className={classes.map}>{switchRoutes}</div>
         )}
         {getRoute() ? <Footer /> : null}
-        <FixedPlugin
-          handleImageClick={handleImageClick}
-          handleColorClick={handleColorClick}
-          bgColor={color}
-          bgImage={image}
-          handleFixedClick={handleFixedClick}
-          fixedClasses={fixedClasses}
-          rtlActive
-        />
       </div>
     </div>
   );

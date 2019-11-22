@@ -8,8 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Navbar from "components/Navbars/Navbar.js";
 import Footer from "components/Footer/Footer.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
@@ -94,16 +92,6 @@ export default function Admin({ ...rest }) {
   }, [mainPanel]);
   return (
     <div className={classes.wrapper}>
-      <Sidebar
-        routes={routes}
-        logoText={"Melos"}
-        logo={logo}
-        image={image}
-        handleDrawerToggle={handleDrawerToggle}
-        open={mobileOpen}
-        color={color}
-        {...rest}
-      />
       <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
           routes={routes}
@@ -119,13 +107,6 @@ export default function Admin({ ...rest }) {
           <div className={classes.map}>{switchRoutes}</div>
         )}
         {getRoute() ? <Footer /> : null}
-        <FixedPlugin
-          handleImageClick={handleImageClick}
-          handleColorClick={handleColorClick}
-          bgColor={color}
-          handleFixedClick={handleFixedClick}
-          fixedClasses={fixedClasses}
-        />
       </div>
     </div>
   );
