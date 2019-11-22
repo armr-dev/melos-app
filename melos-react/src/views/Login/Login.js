@@ -8,6 +8,7 @@ import RegularButton from "components/CustomButtons/Button";
 import logo from 'logo.svg'
 import { Button } from "@material-ui/core";
 import { primaryColor } from "assets/jss/material-dashboard-react.js"
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(styles);
 
@@ -15,7 +16,7 @@ export default function Login(props) {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    console.log(primaryColor[0])
+    const [error, setError] = useState("");
 
     function validateForm() {
       return email.length > 0 && password.length > 0;
@@ -25,6 +26,11 @@ export default function Login(props) {
       event.preventDefault();
     }
     
+    const handleClickSignUp = event => {
+
+
+    }
+
     return (
       <form onSubmit={handleSubmit}>
         <div style={{flexDirection:'column', alignItems:'center', justifyContent:'center', display:'flex'}}>
@@ -55,7 +61,8 @@ export default function Login(props) {
                       }
                     }}
                     />
-                  <RegularButton 
+                  <RegularButton
+                    type='submit' 
                     style={{width:'80%', margin:'25px'}}
                     color={'primary'}
                     size={'lg'}
@@ -67,11 +74,14 @@ export default function Login(props) {
           </Card>
         <div style={{flex:'1', flexDirection:'column', alignItems:'center', justifyContent:'center', display:'flex'}}>
             Ainda não é cadastrado?
-          </div>
-          <Button href='' 
+        </div>
+        <Link to='/admin/signup'>
+          <Button href=''
+                  onClick={handleClickSignUp} 
                   style={{color:primaryColor[0], flex:'1'}}>
                     Cadastre-se!
           </Button>
+        </Link>
 
         </div>
       </form>

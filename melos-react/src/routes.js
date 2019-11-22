@@ -22,6 +22,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Login from "views/Login/Login.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 import Maps from "views/Maps/Maps.js";
+import SignUp from "views/SignUp/SignUp.js";
 
 const dashboardRoutes = [
   {
@@ -43,6 +44,13 @@ const dashboardRoutes = [
     name: "Login",
     icon: UserProfile,
     component: Login,
+    layout: "/admin"
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    icon: UserProfile,
+    component: SignUp,
     layout: "/admin"
   },
   // {
