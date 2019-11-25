@@ -12,5 +12,6 @@ app.get('/', (req,res) => {
 });
 
 require('./controllers/userController')(app);
+require('./controllers/eventController')(app);
     
 app.listen(3000)
