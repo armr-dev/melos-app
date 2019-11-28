@@ -12,8 +12,8 @@ const CustomSkinMap = withScriptjs(
       defaultZoom={13}
       defaultCenter={{ lat: 40.748817, lng: -73.985428 }}
       defaultOptions={{
-        scrollwheel: false,
-        zoomControl: true,
+        scrollwheel: true,
+        zoomControl: false,
         styles: [
           {
             featureType: "water",
@@ -83,11 +83,13 @@ const CustomSkinMap = withScriptjs(
 
 export default function Maps() {
   return (
+    <div>
     <CustomSkinMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Y3pg70wVgWHhHK9GHuWQMIkfRHDiPsE"
       loadingElement={<div style={{ height: `100%` }} />}
       containerElement={<div style={{ height: `100vh` }} />}
       mapElement={<div style={{ height: `100%` }} />}
-    />
+      />
+    </div>
   );
 }
