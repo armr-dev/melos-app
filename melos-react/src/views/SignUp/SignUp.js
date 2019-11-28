@@ -7,8 +7,8 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import RegularButton from "components/CustomButtons/Button";
 import CheckBox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Link } from 'react-router-dom';
 import logo from 'logo.svg'
-import { Button } from "@material-ui/core";
 import { primaryColor } from "assets/jss/material-dashboard-react.js"
 
 const useStyles = makeStyles(styles);
@@ -91,11 +91,12 @@ export default function SignUp(props) {
                   checked={state.checked}
                   onChange={handleCheckChange('checked')}
                   value='checked'
-                  color={'grey'}
-                />
+                  style={{color:primaryColor[0], flex:'1'}}
+                  />
               }
               label="Aceito os termos de uso e política de privacidade"
-              />                                         
+              />
+              <Link to='/admin/login'>
               <RegularButton 
                 style={{width:'80%', margin:'25px'}}
                 color={'primary'}
@@ -104,6 +105,7 @@ export default function SignUp(props) {
                 className={"SignUpButton"}>
                   Cadastrar
               </RegularButton>
+              </Link>                                         
           </CardBody>
         </Card>
       </div>

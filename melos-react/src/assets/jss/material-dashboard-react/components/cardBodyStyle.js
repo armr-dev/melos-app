@@ -1,6 +1,5 @@
 const cardBodyStyle = {
   cardBody: {
-    // padding: "20px 20px",
     width: '87%',
     position: "relative",
     display: "flex",
