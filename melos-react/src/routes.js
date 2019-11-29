@@ -20,9 +20,9 @@ import Person from "@material-ui/icons/Person";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import Login from "views/Login/Login.js";
-import UserProfile from "views/UserProfile/UserProfile.js";
 import Maps from "views/Maps/Maps.js";
 import SignUp from "views/SignUp/SignUp.js";
+import Geolocation from "views/Maps/Geolocation.js"
 
 const dashboardRoutes = [
   {
@@ -33,23 +33,21 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/user",
-    name: "User Profile",
-    icon: Person,
-    component: UserProfile,
+    path: "/geolocation",
+    name: "Geolocalização",
+    icon: LocationOn,
+    component: Geolocation,
     layout: "/admin"
   },
   {
     path: "/login",
     name: "Login",
-    icon: UserProfile,
     component: Login,
     layout: "/admin"
   },
   {
     path: "/signup",
     name: "SignUp",
-    icon: UserProfile,
     component: SignUp,
     layout: "/admin"
   },
