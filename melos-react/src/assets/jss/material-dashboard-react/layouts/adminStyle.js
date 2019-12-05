@@ -6,7 +6,9 @@ import {
 
 const appStyle = theme => ({
   wrapper: {
-    position: "relative",
+    position: "flex",
+    alignItems: 'center',
+    justifyContent: 'center',
     top: "0",
     height: "100vh"
   },
@@ -24,7 +26,7 @@ const appStyle = theme => ({
   },
   content: {
     marginTop: "00px",
-    padding: "30px 15px",
+    // padding: "30px 15px",
     minHeight: "calc(100vh - 123px)"
   },
   container,
