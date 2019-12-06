@@ -2,7 +2,7 @@ const express = require('express');
 
 const User = require('../models/user');
 const router = express.Router();
-const authConfing = require('../config/auth');
+const authConfing = require('../../config/auth');
 
 
 const bcypt = require('bcryptjs');
@@ -41,6 +41,7 @@ router.post('/register', async (req, res) => {
 router.post('/authenticate', async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log(req.body);
 
         const user = await User.findOne({ email }).select('+password');
         
