@@ -22,7 +22,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Login from "views/Login/Login.js";
 import Maps from "views/Maps/Maps.js";
 import SignUp from "views/SignUp/SignUp.js";
-import Geolocation from "views/Maps/Geolocation.js"
+import Geolocation from "views/Maps/Geolocation.js";
 
 const dashboardRoutes = [
   {
@@ -51,13 +51,6 @@ const dashboardRoutes = [
     component: SignUp,
     layout: "/admin"
   },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: BubbleChart,
-  //   component: Icons,
-  //   layout: "/admin"
-  // }
 ];
 
 export default dashboardRoutes;

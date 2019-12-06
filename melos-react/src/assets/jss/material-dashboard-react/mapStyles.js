@@ -3,23 +3,41 @@ const mapStyle = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        // justifyContent: 'space-around',
         position: 'absolute',
-        height:'21.1vh',
-        minHeight: '174px',
+        height:'25vh',
         width:'100vw',
         backgroundColor:'#F2F2F2',
         bottom: 0,
         left: 0,
         borderRadius: '15px 15px 0px 0px',
         boxShadow:'0px 0px 6px 0px grey',
+        transition: 'all ease-in-out 0.5s',
+    },
+
+    bottomMenuOpened: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        position: 'absolute',
+        // justifyContent: 'space-around',
+        // justifyContent: 'space-between',
+        height:'92vh',
+        width:'100vw',
+        backgroundColor:'#F2F2F2',
+        bottom: 0,
+        left: 0,
+        borderRadius: '15px 15px 0px 0px',
+        boxShadow:'0px 0px 6px 0px grey',
+        transition: 'all ease-in-out 0.5s'
     },
 
     dragButton: {
-        height: '1vh',
+        height: '8px',
         width: '7.5vw',
         backgroundColor: '#C4C4C4',
-        marginTop: '10px',
-        marginBottom: '10px',
+        marginTop: '1vh',
+        marginBottom: '1vh',
         borderRadius: 3,
         cursor: 'pointer',
     },
@@ -57,11 +75,12 @@ const mapStyle = {
     searchInput: {
         borderRadius: '5.5vh',
         height: '4.5vh',
-        width: '82vw', 
+        width: '92vw', 
         border: '0px', 
+        padding: '10px 0px',
         boxShadow:'0px 0px',
         textAlign: 'center',
-        fontSize: '1.15em'
+        fontSize: '1.1em'
     }
 
 }
