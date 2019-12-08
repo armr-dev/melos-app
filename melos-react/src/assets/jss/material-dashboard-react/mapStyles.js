@@ -9,7 +9,6 @@ const mapStyle = {
         height:'25vh',
         width:'100vw',
         backgroundColor:'#F2F2F2',
-        // backgroundColor: colors[0],
         bottom: 0,
         left: 0,
         borderRadius: '15px 15px 0px 0px',
@@ -40,7 +39,7 @@ const mapStyle = {
         justifyContent: 'center',
         width: '95vw',
         height: 0,
-        transition: 'all ease-in-out 0.5s'
+        transition: 'all ease-in-out 0.5s',
     },
 
     eventListOpened: {
@@ -216,7 +215,61 @@ const mapStyle = {
         boxShadow:'0px 0px',
         textAlign: 'center',
         fontSize: '1.1em'
-    }
+    },
+
+    drawerParentOpened: {
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
+        width: '70vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'row',
+        transition: 'all ease-in-out 0.5s',
+    },
+
+    drawerParent: {
+        width: '0vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'row',
+        transition: 'all ease-in-out 0.5s'
+
+    },
+
+    darkBackground: {
+        width:'100vw', 
+        height:'100vh', 
+        backgroundColor: 'black', 
+        opacity:0.5, 
+        position:'absolute', 
+        top: 0, 
+        left: 0,
+    },
+
+    drawerStyle: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'white',
+        transition: 'all ease-in-out 0.5s',
+    },
+
+    drawerBtn : {
+        width: '100%',
+        height: '5%',
+        color: 'black'
+    },
+
+    drawerBtnLogout : {
+        position:'flex-end',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        height: '5%',
+        color: 'red'
+    },
 
 }
 

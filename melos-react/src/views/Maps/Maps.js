@@ -10,7 +10,8 @@ import attractionIcon from '../../assets/img/attractionIcon.svg'
 import eventIcon from '../../assets/img/eventIcon.svg'
 import theaterIcon from '../../assets/img/theaterIcon.svg'
 import musicIcon from '../../assets/img/musicIcon.svg'
-import topMenuIcon from '../../assets/img/topMenuIcon.svg'
+import drawerIcon from '../../assets/img/drawerIcon.svg'
+import { Button } from '@material-ui/core';
 
 function selectColor(type) {
   switch (type) {
@@ -79,8 +80,9 @@ const initialList = [{
 
 export default class Maps extends Component {
     state = {
-        opened: true,
-        showEvents: true,
+        menuOpened: false,
+        drawerOpened: true,
+        showEvents: false,
         emptyList: false,
         searchTerm: '',
         eventList: [],
@@ -114,16 +116,22 @@ export default class Maps extends Component {
       this.setState({eventList: filteredEvents, emptyList: true})
     }
 
+    toggleDrawer = () => {
+      const { drawerOpened } = this.state;
+      this.setState({drawerOpened: !drawerOpened})
+      console.log(drawerOpened)
+    }
+    
     toggleMenu = () => {
-      const { opened, showEvents } = this.state;
+      const { menuOpened, showEvents } = this.state;
       this.setState({showEvents: !showEvents});
-      this.setState({opened: !opened})
+      this.setState({menuOpened: !menuOpened})
       console.log(this.state);
     }
 
     openMenu = () => {
       this.setState({showEvents: true});
-      this.setState({opened: true})
+      this.setState({menuOpened: true})
     }
 
     showEvents = () => {
@@ -164,7 +172,7 @@ export default class Maps extends Component {
   };
   
   render() {
-    const { opened, searchTerm, showEvents, eventList } = this.state;
+    const { menuOpened, searchTerm, showEvents, eventList, drawerOpened } = this.state;
 
     return (
             <div style={{position: 'relative', height: '100vh', width: '100vw'}}>
@@ -174,13 +182,9 @@ export default class Maps extends Component {
                 containerElement={<div style={{ height: `100%`, width: '100vw'}} />}
                 mapElement={<div style={{ height: `100%` }}/>}
                 />
-              <div style={{position: 'absolute', top: '2.43vh', left: '4.87vw'}}>
-                <img src={topMenuIcon}
-                     style={{width: '6.81vw', height: '3.4vh'}}/>
-              </div>
-        
+       
               <div 
-                style={opened ? mapStyle.bottomMenuOpened :  mapStyle.bottomMenu}
+                style={menuOpened ? mapStyle.bottomMenuOpened :  mapStyle.bottomMenu}
               >
                 <div 
                   style={mapStyle.dragButton} 
@@ -259,6 +263,46 @@ export default class Maps extends Component {
                 
                 </div>
               </div>
+              
+              
+              <div
+                className='darkBackground' 
+                style={drawerOpened ? mapStyle.darkBackground : {width:0}} 
+                onClick={this.toggleDrawer}
+              />
+              <div 
+                className='drawerParent'
+                style={drawerOpened ? mapStyle.drawerParentOpened : mapStyle.drawerParent}
+              >
+                <div 
+                  className='drawer'
+                  style={mapStyle.drawerStyle}
+                >
+                  <div style={{width:'100%', height:'8%', borderWidth: '0 0 2px 0', borderColor: '#828282', borderStyle: 'solid'}}/>
+                  <Button
+                    className='createEventBtn'
+                    style={mapStyle.drawerBtn}
+                  >
+                    Criar evento
+                  </Button>
+                  <Button
+                    className='createEventBtn'
+                    style={mapStyle.drawerBtnLogout}
+                  >
+                    Logout
+                  </Button>
+
+                </div>
+              </div>              
+
+              <div 
+                style={{position: 'absolute', top: '2.43vh', left: '4.87vw'}}
+                onClick={this.toggleDrawer}
+              >
+                <img src={drawerIcon}
+                     style={{width: '6.81vw', height: '3.4vh'}}/>
+              </div>
+                            
             </div>
           );
         }
