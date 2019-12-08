@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import mapStyle from 'assets/jss/material-dashboard-react/mapStyles.js'
-import Fab from '@material-ui/core/Fab'
+import React, { Component } from "react";
+import mapStyle from "assets/jss/material-dashboard-react/mapStyles.js";
+import Fab from "@material-ui/core/Fab";
 
-import Map from '../../components/Map'
+import MapWithMarkers from "../../components/MapWithMarkers";
 
-import teatro from '../../assets/img/teatro.jpg'
-import showIcon from '../../assets/img/showIcon.svg'
-import attractionIcon from '../../assets/img/attractionIcon.svg'
-import eventIcon from '../../assets/img/eventIcon.svg'
-import theaterIcon from '../../assets/img/theaterIcon.svg'
-import musicIcon from '../../assets/img/musicIcon.svg'
-import drawerIcon from '../../assets/img/drawerIcon.svg'
-import { Button } from '@material-ui/core';
+import teatro from "../../assets/img/teatro.jpg";
+import showIcon from "../../assets/img/showIcon.svg";
+import attractionIcon from "../../assets/img/attractionIcon.svg";
+import eventIcon from "../../assets/img/eventIcon.svg";
+import theaterIcon from "../../assets/img/theaterIcon.svg";
+import musicIcon from "../../assets/img/musicIcon.svg";
+import drawerIcon from "../../assets/img/drawerIcon.svg";
+import { Button } from "@material-ui/core";
 
 function selectColor(type) {
   switch (type) {
-    case 'show':
+    case "show":
       return mapStyle.tagStyleShow;
-    case 'attraction':
+    case "attraction":
       return mapStyle.tagStyleAttraction;
-    case 'event':
+    case "event":
       return mapStyle.tagStyleEvent;
-    case 'theater':
+    case "theater":
       return mapStyle.tagStyleTheater;
 
     default:
@@ -29,281 +29,369 @@ function selectColor(type) {
   }
 }
 
-const initialList = [{
-    id: 'a',
+const initialList = [
+  {
+    id: "a",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.',
-    type: 'show',
-    tags: ['#orquestra', '#piano'],
+    title: "Evento",
+    description:
+      "Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.",
+    type: "show",
+    tags: ["#orquestra", "#piano"],
+    lat: -3.091331,
+    lng: -60.018181,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
   },
   {
-    id: 'b',
+    id: "b",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet.',
-    type: 'attraction',
-    tags: ['#evento', '#atração', '#violão'],
+    title: "Evento",
+    description: "Descrição do evento: Lorem ipsum dolor sit amet.",
+    type: "attraction",
+    tags: ["#evento", "#atração", "#violão"],
+    lat: -3.031,
+    lng: -60.018181,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
   },
   {
-    id: 'c',
+    id: "c",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.',
-    type: 'event',
-    tags: ['#orquestra', '#show'],
+    title: "Evento",
+    description:
+      "Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.",
+    type: "event",
+    tags: ["#orquestra", "#show"],
+    lat: -3.071,
+    lng: -60.01181,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
   },
   {
-    id: 'd',
+    id: "d",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.',
-    type: 'theater',
-    tags: ['#atração', '#show'],
+    title: "Evento",
+    description:
+      "Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.",
+    type: "theater",
+    tags: ["#atração", "#show"],
+    lat: -3.11,
+    lng: -60.0,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
   },
   {
-    id: 'e',
+    id: "e",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.',
-    type: 'music',
-    tags: ['#show', '#bacon'],
+    title: "Evento",
+    description:
+      "Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.",
+    type: "music",
+    tags: ["#show", "#bacon"],
+    lat: -3.09,
+    lng: -60.06,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
   },
   {
-    id: 'f',
+    id: "f",
     img: teatro,
-    title: 'Evento',
-    description: 'Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.',
-    type: 'music',
-    tags: ['#farofão', '#farinha'],
-  }]
+    title: "Evento",
+    description:
+      "Descrição do evento: Lorem ipsum dolor sit amet, consectetur adipiscing elit.  In sit amet suscipit dolor. Nunc sed facilisis sapien. Consectetur adipiscing elit. Sent sit amet ornare urna. Duis ne.",
+    type: "music",
+    tags: ["#farofão", "#farinha"],
+    lat: -3.09555,
+    lng: -60.03,
+    adress:
+      "Av. Darcy Vargas, 1.200 - Parque Dez de Novembro, Manaus - AM, 69050-020"
+  }
+];
 
 export default class Maps extends Component {
-    state = {
-        menuOpened: false,
-        drawerOpened: true,
-        showEvents: false,
-        emptyList: false,
-        searchTerm: '',
-        eventList: [],
+  state = {
+    menuOpened: false,
+    drawerOpened: true,
+    showEvents: false,
+    emptyList: false,
+    searchTerm: "",
+    eventList: []
+  };
+
+  deleteList = () => {
+    this.setState({ eventList: [] });
+  };
+
+  resetEvents = () => {
+    this.setState({ eventList: initialList, emptyList: false });
+  };
+
+  filterEvents = type => {
+    const { eventList, emptyList } = this.state;
+
+    var auxList = eventList;
+
+    if (emptyList) {
+      auxList = initialList;
+      this.setState({ emptyList: false });
     }
 
-    deleteList = () => {
-      this.setState({ eventList:  []})
-    }
-
-    resetEvents = () => {
-      this.setState({ eventList: initialList, emptyList: false })
-    }
-
-    filterEvents = type => {
-      const { eventList, emptyList } = this.state;
-
-      var auxList = eventList
-      console.log(auxList);
-      
-      if (emptyList) {
-        auxList = initialList
-        this.setState({emptyList: false});
+    var filteredEvents = auxList.filter(function(item) {
+      if (item.type == type) {
+        return item;
       }
+    });
 
-      var filteredEvents = auxList.filter(function(item) {
-        if (item.type == type) {
-          return item;
-        }
-      })
+    this.setState({ eventList: filteredEvents, emptyList: true });
+  };
 
-      this.setState({eventList: filteredEvents, emptyList: true})
-    }
+  toggleDrawer = () => {
+    const { drawerOpened } = this.state;
+    this.setState({ drawerOpened: !drawerOpened });
+  };
 
-    toggleDrawer = () => {
-      const { drawerOpened } = this.state;
-      this.setState({drawerOpened: !drawerOpened})
-      console.log(drawerOpened)
-    }
-    
-    toggleMenu = () => {
-      const { menuOpened, showEvents } = this.state;
-      this.setState({showEvents: !showEvents});
-      this.setState({menuOpened: !menuOpened})
-      console.log(this.state);
-    }
+  toggleMenu = () => {
+    const { menuOpened, showEvents } = this.state;
+    this.setState({ showEvents: !showEvents });
+    this.setState({ menuOpened: !menuOpened });
+  };
 
-    openMenu = () => {
-      this.setState({showEvents: true});
-      this.setState({menuOpened: true})
-    }
+  openMenu = () => {
+    this.setState({ showEvents: true });
+    this.setState({ menuOpened: true });
+  };
 
-    showEvents = () => {
-      const { showEvents } = this.state;
-      this.setState({showEvents: !showEvents});
-      console.log(this.state);
-    }
+  showEvents = () => {
+    const { showEvents } = this.state;
+    this.setState({ showEvents: !showEvents });
+  };
 
-    handleSearch = e => {
-      const searchTerm = e.target.value;
-      this.setState({ searchTerm })
-      if (this.timeout) clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => {
-        if (searchTerm.length > 0) {
-          this.loadSearch();
-        }
-        else {
-          this.resetEvents();
-        }
-      }, 200);
-    }
+  handleSearch = e => {
+    const searchTerm = e.target.value;
+    this.setState({ searchTerm });
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      if (searchTerm.length > 0) {
+        this.loadSearch();
+      } else {
+        this.resetEvents();
+      }
+    }, 200);
+  };
 
-    loadSearch = async () => {
-      const { searchTerm, eventList } = this.state;
+  loadSearch = async () => {
+    const { searchTerm, eventList } = this.state;
 
-      var results = eventList.filter((item) => {
-        if (item.tags.some(e => {return e.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1})) {
-          return item;
-        }
-      })
+    var results = eventList.filter(item => {
+      if (
+        item.tags.some(e => {
+          return e.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+        })
+      ) {
+        return item;
+      }
+    });
 
-      this.setState({eventList:results})
-      console.log(`Sua busca para o resultado ${searchTerm} retornou 10 termos`)
-    }
+    this.setState({ eventList: results });
+    console.log(`Sua busca para o resultado ${searchTerm} retornou 10 termos`);
+  };
 
   componentDidMount() {
-    this.setState({eventList: initialList})
-  };
-  
+    this.setState({ eventList: initialList });
+  }
+
   render() {
-    const { menuOpened, searchTerm, showEvents, eventList, drawerOpened } = this.state;
+    const {
+      menuOpened,
+      searchTerm,
+      showEvents,
+      eventList,
+      drawerOpened
+    } = this.state;
 
     return (
-            <div style={{position: 'relative', height: '100vh', width: '100vw'}}>
-              <Map
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQgTwARDtFrtxT29EcwXt7_4PMQ7ypizM"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `100%`, width: '100vw'}} />}
-                mapElement={<div style={{ height: `100%` }}/>}
-                />
-       
-              <div 
-                style={menuOpened ? mapStyle.bottomMenuOpened :  mapStyle.bottomMenu}
-              >
-                <div 
-                  style={mapStyle.dragButton} 
-                  onClick={this.toggleMenu}
-                />
-                <div style={{marginBottom:10}}>
-                  <input 
-                    type='text' 
-                    placeholder='Pesquisar eventos' 
-                    value={searchTerm}
-                    onChange={this.handleSearch} 
-                    style={mapStyle.searchInput}
-                    onClick={this.openMenu}/>
-                </div>
-                <div 
-                  style={showEvents ? mapStyle.eventListOpened : mapStyle.eventList}
-                >  
-                  {eventList.map(item => (
-                    <div style={mapStyle.eventCard} key={item.id}>
-                      <div style={{overflow:'hidden', width:'29vw', height:'100%'}}>
-                        <img 
-                          src={item.img}
-                          style={mapStyle.imgStyle}
-                        />
-                      </div>
-                      <div style={mapStyle.cardContentStyle}>
-                        <div>
-                          <div style={mapStyle.titleStyle}>{item.title}</div>
-                          <div style={mapStyle.tagContainer}>
-                          {(item.tags).map(tag => (
-                            <div style={selectColor(item.type)}>{tag}</div>
-                            ))}
-                          </div> 
-                        </div>
-                        <div style={mapStyle.descriptionStyle}>{item.description}</div>
-                      </div>
-                    </div>
-                    ))}
-                </div>
-                
-                <div style={{display: 'flex', flexDirection: 'row'}}>
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <Fab style={mapStyle.showButton} onClick={this.filterEvents.bind(this, 'show')}>
-                      <img src={showIcon} style={{width:'43%'}}/>
-                    </Fab>
-                    <p style={{fontSize:'.95em', marginTop: 7}}>Show</p>
-                  </div>
-                  
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '5.11vw'}}>
-                    <Fab style={mapStyle.attractionButton} onClick={this.filterEvents.bind(this, 'attraction')}>
-                      <img src={attractionIcon} style={{width:'43%'}}/>
-                    </Fab>
-                    <p style={{fontSize:'.95em', marginTop: 7}}>Atração</p>
-                  </div>
-                  
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '5.11vw'}}>
-                    <Fab style={mapStyle.eventButton} onClick={this.filterEvents.bind(this, 'event')}>
-                      <img src={eventIcon} style={{width:'43%'}}/>
-                    </Fab>
-                    <p style={{fontSize:'.95em', marginTop: 7}}>Evento</p>
-                  </div>
-                  
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '5.11vw'}}>
-                    <Fab style={mapStyle.theaterButton} onClick={this.filterEvents.bind(this, 'theater')}>
-                      <img src={theaterIcon} style={{width:'43%'}}/>
-                    </Fab>
-                    <p style={{fontSize:'.95em', marginTop: 7}}>Teatro</p>
-                  </div>
-                  
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '5.11vw'}}>
-                    <Fab style={mapStyle.musicButton} onClick={this.filterEvents.bind(this, 'music')}>
-                      <img src={musicIcon} style={{width:'43%'}}/>
-                    </Fab> 
-                    <p style={{fontSize:'.95em', marginTop: 7}}>Música</p>
-                  </div>
-                
-                </div>
-              </div>
-              
-              
-              <div
-                className='darkBackground' 
-                style={drawerOpened ? mapStyle.darkBackground : {width:0}} 
-                onClick={this.toggleDrawer}
-              />
-              <div 
-                className='drawerParent'
-                style={drawerOpened ? mapStyle.drawerParentOpened : mapStyle.drawerParent}
-              >
-                <div 
-                  className='drawer'
-                  style={mapStyle.drawerStyle}
+      <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
+        <MapWithMarkers
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQgTwARDtFrtxT29EcwXt7_4PMQ7ypizM"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%`, width: "100vw" }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          places={eventList}
+        />
+
+        <div
+          style={menuOpened ? mapStyle.bottomMenuOpened : mapStyle.bottomMenu}
+        >
+          <div style={mapStyle.dragButton} onClick={this.toggleMenu} />
+          <div style={{ marginBottom: 10 }}>
+            <input
+              type="text"
+              placeholder="Pesquisar eventos"
+              value={searchTerm}
+              onChange={this.handleSearch}
+              style={mapStyle.searchInput}
+              onClick={this.openMenu}
+            />
+          </div>
+          <div
+            style={showEvents ? mapStyle.eventListOpened : mapStyle.eventList}
+          >
+            {eventList.map(item => (
+              <div style={mapStyle.eventCard} key={item.id}>
+                <div
+                  style={{ overflow: "hidden", width: "29vw", height: "100%" }}
                 >
-                  <div style={{width:'100%', height:'8%', borderWidth: '0 0 2px 0', borderColor: '#828282', borderStyle: 'solid'}}/>
-                  <Button
-                    className='createEventBtn'
-                    style={mapStyle.drawerBtn}
-                  >
-                    Criar evento
-                  </Button>
-                  <Button
-                    className='createEventBtn'
-                    style={mapStyle.drawerBtnLogout}
-                  >
-                    Logout
-                  </Button>
-
+                  <img src={item.img} style={mapStyle.imgStyle} />
                 </div>
-              </div>              
-
-              <div 
-                style={{position: 'absolute', top: '2.43vh', left: '4.87vw'}}
-                onClick={this.toggleDrawer}
-              >
-                <img src={drawerIcon}
-                     style={{width: '6.81vw', height: '3.4vh'}}/>
+                <div style={mapStyle.cardContentStyle}>
+                  <div>
+                    <div style={mapStyle.titleStyle}>{item.title}</div>
+                    <div style={mapStyle.tagContainer}>
+                      {item.tags.map(tag => (
+                        <div style={selectColor(item.type)}>{tag}</div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={mapStyle.descriptionStyle}>
+                    {item.description}
+                  </div>
+                </div>
               </div>
-                            
+            ))}
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <Fab
+                style={mapStyle.showButton}
+                onClick={this.filterEvents.bind(this, "show")}
+              >
+                <img src={showIcon} style={{ width: "43%" }} />
+              </Fab>
+              <p style={{ fontSize: ".95em", marginTop: 7 }}>Show</p>
             </div>
-          );
-        }
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginLeft: "5.11vw"
+              }}
+            >
+              <Fab
+                style={mapStyle.attractionButton}
+                onClick={this.filterEvents.bind(this, "attraction")}
+              >
+                <img src={attractionIcon} style={{ width: "43%" }} />
+              </Fab>
+              <p style={{ fontSize: ".95em", marginTop: 7 }}>Atração</p>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginLeft: "5.11vw"
+              }}
+            >
+              <Fab
+                style={mapStyle.eventButton}
+                onClick={this.filterEvents.bind(this, "event")}
+              >
+                <img src={eventIcon} style={{ width: "43%" }} />
+              </Fab>
+              <p style={{ fontSize: ".95em", marginTop: 7 }}>Evento</p>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginLeft: "5.11vw"
+              }}
+            >
+              <Fab
+                style={mapStyle.theaterButton}
+                onClick={this.filterEvents.bind(this, "theater")}
+              >
+                <img src={theaterIcon} style={{ width: "43%" }} />
+              </Fab>
+              <p style={{ fontSize: ".95em", marginTop: 7 }}>Teatro</p>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginLeft: "5.11vw"
+              }}
+            >
+              <Fab
+                style={mapStyle.musicButton}
+                onClick={this.filterEvents.bind(this, "music")}
+              >
+                <img src={musicIcon} style={{ width: "43%" }} />
+              </Fab>
+              <p style={{ fontSize: ".95em", marginTop: 7 }}>Música</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="darkBackground"
+          style={drawerOpened ? mapStyle.darkBackground : { width: 0 }}
+          onClick={this.toggleDrawer}
+        />
+        <div
+          className="drawerParent"
+          style={
+            drawerOpened ? mapStyle.drawerParentOpened : mapStyle.drawerParent
+          }
+        >
+          <div className="drawer" style={mapStyle.drawerStyle}>
+            <div
+              style={{
+                width: "100%",
+                height: "8%",
+                borderWidth: "0 0 2px 0",
+                borderColor: "#828282",
+                borderStyle: "solid"
+              }}
+            />
+            <Button
+              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn}
+            >
+              criar evento
+            </Button>
+            <Button
+              className="createEventBtn"
+              style={
+                drawerOpened ? mapStyle.drawerBtnLogout : mapStyle.hiddenBtn
+              }
+            >
+              Logout
+            </Button>
+          </div>
+        </div>
+
+        <div
+          style={{ position: "absolute", top: "2.43vh", left: "4.87vw" }}
+          onClick={this.toggleDrawer}
+        >
+          <img src={drawerIcon} style={{ width: "6.81vw", height: "3.4vh" }} />
+        </div>
+      </div>
+    );
+  }
 }

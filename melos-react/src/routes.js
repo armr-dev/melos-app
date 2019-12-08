@@ -16,13 +16,13 @@
 
 */
 // @material-ui/icons
-import Person from "@material-ui/icons/Person";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import Login from "views/Login/Login.js";
 import Maps from "views/Maps/Maps.js";
 import SignUp from "views/SignUp/SignUp.js";
 import Geolocation from "views/Maps/Geolocation.js";
+import test from "views/test.js";
 
 const dashboardRoutes = [
   {
@@ -51,6 +51,12 @@ const dashboardRoutes = [
     component: SignUp,
     layout: "/admin"
   },
+  {
+    path: "/test",
+    name: "SignUp",
+    component: test,
+    layout: "/admin"
+  }
 ];
 
 export default dashboardRoutes;

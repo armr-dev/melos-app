@@ -1,5 +1,3 @@
-const colors = ['#00000']
-
 const mapStyle = {
     bottomMenu: {
         display: 'flex',
@@ -225,15 +223,19 @@ const mapStyle = {
         height: '100vh',
         display: 'flex',
         flexDirection: 'row',
-        transition: 'all ease-in-out 0.5s',
+        // transition: 'all ease-in-out 0.5s',
+        transition: 'width 0.7s'
     },
 
     drawerParent: {
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
         width: '0vw',
         height: '100vh',
         display: 'flex',
         flexDirection: 'row',
-        transition: 'all ease-in-out 0.5s'
+        transition: 'width 0.5s'
 
     },
 
@@ -253,23 +255,29 @@ const mapStyle = {
         height: '100%',
         width: '100%',
         backgroundColor: 'white',
-        transition: 'all ease-in-out 0.5s',
     },
 
     drawerBtn : {
+        display: 'flex',
         width: '100%',
+        minWidth: '28vw',
         height: '5%',
-        color: 'black'
+        color: 'black',
+        visibility: 'visible',
     },
 
     drawerBtnLogout : {
-        position:'flex-end',
-        bottom: 0,
-        left: 0,
+        display:'flex',
         width: '100%',
         height: '5%',
-        color: 'red'
+        color: 'red',
+        visibility: 'visible',
     },
+
+    hiddenBtn : {
+        visibility: 'hidden',
+        transition: 'all ease-in-out 0.17s'
+    }
 
 }
 
