@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Event from "components/Event";
 import teatro from "assets/img/teatro.jpg";
 
@@ -84,7 +84,7 @@ const initialList = [
 ];
 
 const test = () => {
-  return <Event event={initialList[4]} />;
+  return <Event event={initialList[2]} visible={true} />;
 };
 
 export default test;

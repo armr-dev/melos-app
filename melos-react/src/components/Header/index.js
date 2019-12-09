@@ -47,7 +47,8 @@ const style = {
   }
 };
 
-const Header = ({ props }) => {
+const Header = ({ props, backFunction }) => {
+  console.log(backFunction);
   var sel;
   switch (props) {
     case "show":
@@ -72,7 +73,7 @@ const Header = ({ props }) => {
         ...style.headerBackground
       })}
     >
-      <img src={backIcon} style={style.backIconStyle} />
+      <img src={backIcon} style={style.backIconStyle} onClick={backFunction} />
       <div style={style.headerText}>{sel.name}</div>
     </div>
   );

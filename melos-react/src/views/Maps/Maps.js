@@ -3,6 +3,7 @@ import mapStyle from "assets/jss/material-dashboard-react/mapStyles.js";
 import Fab from "@material-ui/core/Fab";
 
 import MapWithMarkers from "../../components/MapWithMarkers";
+import Event from "../../components/Event";
 
 import teatro from "../../assets/img/teatro.jpg";
 import showIcon from "../../assets/img/showIcon.svg";
@@ -112,11 +113,13 @@ const initialList = [
 export default class Maps extends Component {
   state = {
     menuOpened: false,
-    drawerOpened: true,
+    drawerOpened: false,
     showEvents: false,
     emptyList: false,
     searchTerm: "",
-    eventList: []
+    eventList: [],
+    eventVisible: false,
+    selectedEvent: [{}]
   };
 
   deleteList = () => {
@@ -197,8 +200,19 @@ export default class Maps extends Component {
     console.log(`Sua busca para o resultado ${searchTerm} retornou 10 termos`);
   };
 
-  componentDidMount() {
-    this.setState({ eventList: initialList });
+  selectEvent = id => {
+    this.setState({
+      selectedEvent: this.state.eventList.find(item => item.id === id),
+      eventVisible: true
+    });
+  };
+
+  componentWillMount() {
+    this.setState({
+      eventList: initialList,
+      selectedEvent: initialList[0],
+      eventVisible: false
+    });
   }
 
   render() {
@@ -207,11 +221,21 @@ export default class Maps extends Component {
       searchTerm,
       showEvents,
       eventList,
-      drawerOpened
+      drawerOpened,
+      eventVisible,
+      selectedEvent
     } = this.state;
 
+    console.log(eventVisible);
     return (
-      <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
+      <div
+        style={{
+          position: "relative",
+          height: "100vh",
+          width: "100vw",
+          overflow: "hidden"
+        }}
+      >
         <MapWithMarkers
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQgTwARDtFrtxT29EcwXt7_4PMQ7ypizM"
           loadingElement={<div style={{ height: `100%` }} />}
@@ -238,7 +262,11 @@ export default class Maps extends Component {
             style={showEvents ? mapStyle.eventListOpened : mapStyle.eventList}
           >
             {eventList.map(item => (
-              <div style={mapStyle.eventCard} key={item.id}>
+              <div
+                style={mapStyle.eventCard}
+                key={item.id}
+                onClick={this.selectEvent.bind(this, item.id)}
+              >
                 <div
                   style={{ overflow: "hidden", width: "29vw", height: "100%" }}
                 >
@@ -391,6 +419,13 @@ export default class Maps extends Component {
         >
           <img src={drawerIcon} style={{ width: "6.81vw", height: "3.4vh" }} />
         </div>
+        <Event
+          event={selectedEvent}
+          visible={eventVisible}
+          setState={p => {
+            this.setState(p);
+          }}
+        />
       </div>
     );
   }

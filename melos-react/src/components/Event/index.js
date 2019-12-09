@@ -1,30 +1,74 @@
-import React from "react";
+import React, { Component } from "react";
 import Header from "components/Header";
 import rightArrow from "assets/img/rightArrow.svg";
+import backIcon from "../../assets/img/backIcon.svg";
+import { transition } from "assets/jss/material-dashboard-react";
 
 const type = {
   show: {
+    name: "Show",
     color: "#F2C94C"
   },
   attraction: {
+    name: "Atração",
     color: "#9B51E0"
   },
   event: {
+    name: "Evento",
     color: "#EB5757"
   },
   theater: {
+    name: "Teatro",
     color: "#2F80ED"
   },
   music: {
+    name: "Música ao Vivo",
     color: "#27AE60"
   }
 };
 
 const style = {
   pageStyle: {
+    height: "100vh",
+    width: "100vw",
     position: "absolute",
     left: 0,
-    top: 0
+    top: 0,
+    backgroundColor: "#EEEEEE",
+    visibility: "visible",
+    transition: "left 0.25s ease-in"
+  },
+  pageStyleInvisible: {
+    height: "100vh",
+    width: "100vw",
+    position: "absolute",
+    left: "-100vw",
+    top: 0,
+    backgroundColor: "#EEEEEE",
+    transition: "left 0.35s ease-out, visibility 1.5s, opacity 1.5s",
+    visibility: "hidden",
+    opacity: 0
+  },
+
+  headerBackground: {
+    float: "left",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100vw",
+    height: "10vh"
+  },
+
+  headerText: {
+    fontWeight: "400",
+    color: "white",
+    fontSize: "1.5em",
+    marginLeft: "8vw"
+  },
+
+  backIconStyle: {
+    height: "30%",
+    marginLeft: "4vw"
   },
 
   imgStyle: {
@@ -60,7 +104,7 @@ const style = {
     borderRadius: "1.2em",
     width: "auto",
     marginRight: "1vw",
-    padding: "0 5px 0 5px",
+    padding: "3px 7px 1px 7px",
     lineHeight: 1,
     verticalAlign: "center",
     textAlign: "center",
@@ -104,55 +148,86 @@ const style = {
   }
 };
 
-const Event = ({ event }) => {
-  console.log(event);
-  var sel;
-  switch (event.type) {
-    case "show":
-      sel = type.show;
-      break;
-    case "attraction":
-      sel = type.attraction;
-      break;
-    case "event":
-      sel = type.event;
-      break;
-    case "theater":
-      sel = type.theater;
-      break;
-    default:
-      sel = type.music;
+class Event extends React.Component {
+  state = {
+    visible: true,
+    event: {}
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { visible: this.props.visible, event: this.props.event };
   }
-  console.log(event.location);
-  return (
-    <div style={style.pageStyle}>
-      <Header props={event.type} />
-      <img src={event.img} style={style.imgStyle} />
-      <div style={style.titleStyle}>{event.title}</div>
-      <div style={style.tagContainer}>
-        {event.tags.map(tag => (
-          <div
-            style={Object.assign({
-              backgroundColor: sel.color,
-              ...style.tagStyle
-            })}
-          >
-            {tag}
-          </div>
-        ))}
-      </div>
-      <div style={style.adressContainer}>
-        <div style={style.adressStyle}>
-          <div style={style.adressTitleStyle}>Endereço</div>
-          <div style={style.adressDescriptionStyle}>{event.adress}</div>
+
+  back = () => {
+    this.setState({ visible: false });
+    this.props.setState({ eventVisible: false });
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      visible: nextProps.visible,
+      event: nextProps.event
+    };
+  }
+
+  render() {
+    const { visible, event } = this.state;
+    var sel;
+    switch (event.type) {
+      case "show":
+        sel = type.show;
+        break;
+      case "attraction":
+        sel = type.attraction;
+        break;
+      case "event":
+        sel = type.event;
+        break;
+      case "theater":
+        sel = type.theater;
+        break;
+      default:
+        sel = type.music;
+    }
+    return (
+      <div style={visible ? style.pageStyle : style.pageStyleInvisible}>
+        <div
+          style={Object.assign({
+            backgroundColor: sel.color,
+            ...style.headerBackground
+          })}
+        >
+          <img src={backIcon} style={style.backIconStyle} onClick={this.back} />
+          <div style={style.headerText}>{sel.name}</div>
         </div>
-        <button style={style.goToAdressBtn}>
-          <img src={rightArrow} />
-        </button>
+        <img src={event.img} style={style.imgStyle} />
+        <div style={style.titleStyle}>{event.title}</div>
+        <div style={style.tagContainer}>
+          {event.tags.map(tag => (
+            <div
+              style={Object.assign({
+                backgroundColor: sel.color,
+                ...style.tagStyle
+              })}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+        <div style={style.adressContainer}>
+          <div style={style.adressStyle}>
+            <div style={style.adressTitleStyle}>Endereço</div>
+            <div style={style.adressDescriptionStyle}>{event.adress}</div>
+          </div>
+          <button style={style.goToAdressBtn}>
+            <img src={rightArrow} />
+          </button>
+        </div>
+        <div style={style.descriptionStyle}>{event.description}</div>
       </div>
-      <div style={style.descriptionStyle}>{event.description}</div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Event;
