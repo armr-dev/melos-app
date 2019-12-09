@@ -19,6 +19,22 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/tags', async (req, res) => {
+    try {
+        const { tags } = req.body;
+        console.log(tags);
+        const events= await Event.find().where('tags').in(tags).populate({
+            path: 'creator',
+            select: '-cpf'
+        });
+        return res.send({ events })
+    } catch (error) {
+        console.log(error);
+       return res.status(400).send({error: 'Could not retrieve events'}) 
+    }
+});
+
+
 router.get('/:eventId', async (req, res) => {
     try {
         const event= await Event.findById(req.params.eventId).populate({
