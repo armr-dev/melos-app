@@ -166,8 +166,8 @@ export default class Maps extends Component {
   };
 
   createEvent = () => {
-    this.props.history.push(`admin/event`)
-  }
+    this.props.history.push(`admin/event`);
+  };
 
   showEvents = () => {
     const { showEvents } = this.state;
@@ -230,7 +230,7 @@ export default class Maps extends Component {
       selectedEvent
     } = this.state;
 
-    console.log(eventVisible);
+    console.log(selectedEvent);
     return (
       <div
         style={{
@@ -246,6 +246,7 @@ export default class Maps extends Component {
           containerElement={<div style={{ height: `100%`, width: "100vw" }} />}
           mapElement={<div style={{ height: `100%` }} />}
           places={eventList}
+          setState={p => this.setState(p)}
         />
 
         <div
@@ -402,13 +403,13 @@ export default class Maps extends Component {
               }}
             />
             <Button
-              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn} onClick={this.createEvent}
+              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn}
+              onClick={this.createEvent}
             >
               criar evento
             </Button>
             <Button
               className="createEventBtn"
-              onClick={console.log("click")}
               style={
                 drawerOpened ? mapStyle.drawerBtnLogout : mapStyle.hiddenBtn
               }
