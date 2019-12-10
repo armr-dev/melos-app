@@ -165,6 +165,10 @@ export default class Maps extends Component {
     this.setState({ menuOpened: true });
   };
 
+  createEvent = () => {
+    this.props.history.push(`admin/event`)
+  }
+
   showEvents = () => {
     const { showEvents } = this.state;
     this.setState({ showEvents: !showEvents });
@@ -398,12 +402,13 @@ export default class Maps extends Component {
               }}
             />
             <Button
-              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn}
+              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn} onClick={this.createEvent}
             >
               criar evento
             </Button>
             <Button
               className="createEventBtn"
+              onClick={console.log("click")}
               style={
                 drawerOpened ? mapStyle.drawerBtnLogout : mapStyle.hiddenBtn
               }

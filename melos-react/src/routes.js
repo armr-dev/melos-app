@@ -23,6 +23,7 @@ import Maps from "views/Maps/Maps.js";
 import SignUp from "views/SignUp/SignUp.js";
 import Geolocation from "views/Maps/Geolocation.js";
 import test from "views/test.js";
+import CreateEvent from "views/Event/Event.js";
 
 const dashboardRoutes = [
   {
@@ -56,7 +57,13 @@ const dashboardRoutes = [
     name: "SignUp",
     component: test,
     layout: "/admin"
-  }
+  }, 
+  {
+    path: "/event",
+    name: "CreateEvent",
+    component: CreateEvent,
+    layout: "/admin"
+  },
 ];
 
 export default dashboardRoutes;
