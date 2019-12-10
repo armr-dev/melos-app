@@ -37,16 +37,7 @@ const useStyles = makeStyles(styles);
 export default function UserProfile() {
   const classes = useStyles();
   return (
-    
     <div>
-        <div
-          style={Object.assign({
-            backgroundColor: "#",
-          })}
-        >
-          <img src={backIcon} style={style.backIconStyle} onClick={this.back} />
-          <div style={style.headerText}>{sel.name}</div>
-        </div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
