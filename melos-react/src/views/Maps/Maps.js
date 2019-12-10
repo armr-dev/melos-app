@@ -14,6 +14,8 @@ import musicIcon from "../../assets/img/musicIcon.svg";
 import drawerIcon from "../../assets/img/drawerIcon.svg";
 import { Button } from "@material-ui/core";
 
+import { Link } from "react-router-dom";
+
 function selectColor(type) {
   switch (type) {
     case "show":
@@ -230,7 +232,6 @@ export default class Maps extends Component {
       selectedEvent
     } = this.state;
 
-    console.log(selectedEvent);
     return (
       <div
         style={{
@@ -402,20 +403,23 @@ export default class Maps extends Component {
                 borderStyle: "solid"
               }}
             />
-            <Button
-              style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn}
-              onClick={this.createEvent}
-            >
-              criar evento
-            </Button>
-            <Button
-              className="createEventBtn"
-              style={
-                drawerOpened ? mapStyle.drawerBtnLogout : mapStyle.hiddenBtn
-              }
-            >
-              Logout
-            </Button>
+            <Link to={"/admin/event"}>
+              <Button
+                style={drawerOpened ? mapStyle.drawerBtn : mapStyle.hiddenBtn}
+              >
+                criar evento
+              </Button>
+            </Link>
+            <Link to={"/admin/login"}>
+              <Button
+                className="createEventBtn"
+                style={
+                  drawerOpened ? mapStyle.drawerBtnLogout : mapStyle.hiddenBtn
+                }
+              >
+                Logout
+              </Button>
+            </Link>
           </div>
         </div>
 

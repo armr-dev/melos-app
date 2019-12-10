@@ -13,6 +13,8 @@ import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
+import { Link } from "react-router-dom";
+
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -46,7 +48,6 @@ export default function UserProfile() {
             </CardHeader> */}
             <CardBody>
               <GridContainer>
-            
                 <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
                     labelText="Nome do Evento"
@@ -92,11 +93,12 @@ export default function UserProfile() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="info">Salvar</Button>
+              <Link to={"/admin/maps"}>
+                <Button color="info">Salvar</Button>
+              </Link>
             </CardFooter>
           </Card>
         </GridItem>
-    
       </GridContainer>
     </div>
   );
